@@ -137,3 +137,8 @@ dist
 
 # SvelteKit build / generate output
 .svelte-kit
+
+.vscode
+cypress/downloads
+cypress/videos
+cypress/screenshots
