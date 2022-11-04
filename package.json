@@ -25,7 +25,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "cy-verify-downloads": "^0.1.8",
-    "cypress": "^10.3.1",
+    "cypress": "^10.11.0",
     "cypress-downloadfile": "^1.2.2",
     "cypress-if": "^1.5.1",
     "cypress-xpath": "^2.0.0",
