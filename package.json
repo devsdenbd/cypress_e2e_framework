@@ -4,8 +4,9 @@
   "description": "Cypress End to End Framework by DevsDenBD",
   "main": "index.js",
   "scripts": {
-    "report": "allure generate allure-results --clean -o allure-report",
-    "headless": "cypress run --browser chrome --headless --env allure=true",
+    "headless:allure": "cypress run --browser chrome --headless --env allure=true",
+    "report:allure": "allure generate allure-results --clean -o allure-report",
+    "open:allure" : "allure open",
     "cy": "cypress open",
     "test": "cypress run --browser chrome --spec cypress/tests/**.js"
   },

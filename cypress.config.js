@@ -23,10 +23,11 @@ module.exports = defineConfig({
   e2e: {
     specPattern: 'cypress/tests/**/*.cy.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
+      return require('./cypress/plugins/index.js')(on, config);
       // implement node event listeners here
-      require("cypress-mochawesome-reporter/plugin")(on);
-      allureWriter(on, config);
-      return config;
+      // require("cypress-mochawesome-reporter/plugin")(on);
+      // allureWriter(on, config);
+      // return config;
     },
   },
 });
