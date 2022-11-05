@@ -2,6 +2,8 @@
 
 import homePage from '../pages/homePage';
 
+import utils from '../support/utils'
+
 describe('HomePage Testing', () => {
   it('Navigate and Validate Home Page', () => {
    cy.visit(Cypress.env('homePage'));
@@ -9,44 +11,22 @@ describe('HomePage Testing', () => {
   });
 
   it('Validate Header Menus ', () => {
-    const menuClass = [
-      'fa fa-home',
-      'material-icons card_travel',
-      'fa fa-shopping-cart',
-      'fa fa-lock',
-      'fa fa-list',
-      'fa fa-list',
-      'fa fa-youtube-play',
-      'fa fa-envelope',
-    ];
-
     homePage
       .allHeaderItems()
       .should('be.visible')
       .find('i')
       .each((item, index, list) => {
         expect(list).to.have.lengthOf(8);
-
-        cy.wrap(item).should('have.class', menuClass[index]);
+        
+        cy.wrap(item).should('have.class', utils.menuClass[index]);
       });
-
-    const menuLinkText = [
-      ' Home',
-      ' Products',
-      ' Cart',
-      ' Signup / Login',
-      ' Test Cases',
-      ' API Testing',
-      ' Video Tutorials',
-      ' Contact us',
-    ];
 
     homePage.allHeaderItems().each((item, index, list) => {
       expect(list).to.have.lengthOf(8);
 
-      expect(Cypress.$(item).text()).to.eq(menuLinkText[index]);
+      expect(Cypress.$(item).text()).to.eq(utils.menuLinkText[index]);
 
-      cy.wrap(item).should('have.text', menuLinkText[index]);
+      cy.wrap(item).should('have.text', utils.menuLinkText[index]);
     });
   });
 
