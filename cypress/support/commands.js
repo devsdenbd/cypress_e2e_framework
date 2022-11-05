@@ -22,13 +22,12 @@ const brandsCategory = [
 Cypress.Commands.add('validUrl', (partialUrl, fullUrl) => {
   cy.url()
     .then((value) => {
-      cy.log('Current Url Is: ', value);
+      cy.log('Current Url Is: ', value)
+      expect(value).to.contains(partialUrl)
+      expect(value).to.eq(fullUrl);
     })
-    .should('include', partialUrl)
-    .should('eq', fullUrl);
-
   cy.request(fullUrl).should((response) => {
-    expect(response.status).to.eq(200);
+    expect(response.status).to.eq(200)
   });
 });
 
