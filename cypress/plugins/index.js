@@ -6,6 +6,7 @@
  */
 // const { isFileExist, findFiles } = require('cy-verify-downloads');
 // const { downloadFile } = require('cypress-downloadfile/lib/addPlugin');
+
 module.exports = (on, config) => {
   // on('task', { downloadFile });
   // on('task', { isFileExist, findFiles });
@@ -17,4 +18,6 @@ module.exports = (on, config) => {
   //       })
   //     })
   // } });
+
+  
 };
