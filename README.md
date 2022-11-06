@@ -9,6 +9,6 @@ Instructions:
 
 
 Allure Report generation steps:
-1. npm run headless
-2. npm run report 
-3. allure open
+1. npm run headless:allure
+2. npm run report:allure
+3. npm run open:allure

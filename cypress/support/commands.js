@@ -1,6 +1,4 @@
 /// <reference types="cypress" />
-// require('cypress-downloadfile/lib/downloadFileCommand');
-// require('cy-verify-downloads').addCustomCommand();
 
 import homePage from '../pages/homePage';
 
@@ -26,12 +24,7 @@ Cypress.Commands.add('validUrl', (partialUrl, fullUrl) => {
       cy.log('Current Url Is: ', value)
       expect(value).to.contains(partialUrl)
       expect(value).to.eq(fullUrl);
-    })
-
-      cy.log('Current Url Is: ', value);
-      expect(value).to.contains(partialUrl);
-      expect(value).to.eq(fullUrl);
-    })
+    });
   
   cy.request(fullUrl).should((response) => {
   expect(response.status).to.eq(200);
@@ -41,6 +34,8 @@ Cypress.Commands.add('validUrl', (partialUrl, fullUrl) => {
     expect(response.status).to.not.eq(400);
     cy.log("Request Time Out")
   });
+
+})
 
 
 Cypress.Commands.add('productCategory', (value) => {
