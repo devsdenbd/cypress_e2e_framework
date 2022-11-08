@@ -6,7 +6,7 @@
   "scripts": {
     "headless:allure": "cypress run --browser chrome --headless --env allure=true",
     "report:allure": "allure generate allure-results --clean -o allure-report",
-    "open:allure" : "allure open",
+    "open:allure": "allure open",
     "cy": "cypress open",
     "test": "cypress run --browser chrome --spec cypress/tests/**.js"
   },
@@ -46,6 +46,6 @@
     "prettier": "^2.7.1"
   },
   "dependencies": {
-    "cypress-real-events": "^1.7.1"
+    "cypress-real-events": "^1.7.2"
   }
 }
