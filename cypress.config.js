@@ -1,11 +1,10 @@
-const { defineConfig } = require("cypress");
-const allureWriter = require("@shelex/cypress-allure-plugin/writer");
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
-  reporter: "cypress-mochawesome-reporter",
+  reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     charts: true,
-    reportPageTitle: "custom-title",
+    reportPageTitle: 'custom-title',
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: false,
@@ -21,7 +20,9 @@ module.exports = defineConfig({
     viewportWidth: 1920,
   },
   e2e: {
+    includeShadowDom: true,
     specPattern: 'cypress/tests/**/*.cy.{js,jsx,ts,tsx}',
+
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.js')(on, config);
       // implement node event listeners here

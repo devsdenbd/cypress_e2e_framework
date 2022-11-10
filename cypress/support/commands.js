@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-
+import { faker } from '@faker-js/faker';
 import homePage from '../pages/homePage';
 
 const productCategory = ['Dress', 'Jeans', 'Tops & Shirts'];
@@ -18,25 +18,21 @@ const brandsCategory = [
 ];
 
 Cypress.Commands.add('validUrl', (partialUrl, fullUrl) => {
-  cy.url()
-    .then((value) => {
+  cy.url().then((value) => {
+    cy.log('Current Url Is: ', value);
+    expect(value).to.contains(partialUrl);
+    expect(value).to.eq(fullUrl);
+  });
 
-      cy.log('Current Url Is: ', value)
-      expect(value).to.contains(partialUrl)
-      expect(value).to.eq(fullUrl);
-    });
-  
   cy.request(fullUrl).should((response) => {
-  expect(response.status).to.eq(200);
+    expect(response.status).to.eq(200);
   });
 
   cy.request(fullUrl).should((response) => {
     expect(response.status).to.not.eq(400);
-    cy.log("Request Time Out")
+    cy.log('Request Time Out');
   });
-
-})
-
+});
 
 Cypress.Commands.add('productCategory', (value) => {
   homePage.categoryItems().each((item, index, list) => {
@@ -148,4 +144,28 @@ Cypress.Commands.add('isFixtureImage', (subject, fixtureImage) => {
         });
       });
     });
+});
+
+Cypress.Commands.add('generateRegisterFixture', () => {
+  cy.writeFile('cypress/fixtures/registerData.json', {
+    userName: `${faker.internet.userName()}`,
+    email: `${faker.internet.email()}`,
+    password: `${faker.internet.password()}`,
+    dayOfBirth: `${faker.datatype.number({ min: 1, max: 27 })}`,
+    monthOfBirth: `${faker.date.month()}`,
+    yearOfBirth: `${faker.datatype.number({ min: 1950, max: 2012 })}`,
+    firstName: `${faker.name.firstName()}`,
+    lastName: `${faker.name.lastName()}`,
+    company: `${faker.company.companyName()}`,
+    addressFirstLine: `${faker.address.streetName()}`,
+    addressSecondLine: `${faker.address.secondaryAddress()}`,
+    state: `${faker.address.state()}`,
+    city: `${faker.address.city()}`,
+    zipCode: `${faker.address.zipCode()}`,
+    phoneNumber: `${faker.phone.number()}`,
+    cardNumber: `${faker.finance.creditCardNumber()}`,
+    cvvCardNumber: `${faker.finance.creditCardCVV()}`,
+    expirationMonth: `${faker.datatype.number({ min: 1, max: 12 })}`,
+    expirationYear: `${faker.datatype.number({ min: 2022, max: 2040 })}`,
+  });
 });

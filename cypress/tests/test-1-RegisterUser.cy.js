@@ -2,11 +2,7 @@
 
 import homepage from '../pages/homePage';
 import baseFunc from '../pages/functions';
-import loginPage from '../pages/loginPage'
-// 4. Click on 'Signup / Login' button
-// 5. Verify 'New User Signup!' is visible
-// 6. Enter name and email address
-// 7. Click 'Signup' button
+import loginPage from '../pages/loginPage';
 // 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
 // 9. Fill details: Title, Name, Email, Password, Date of birth
 // 10. Select checkbox 'Sign up for our newsletter!'
@@ -19,31 +15,52 @@ import loginPage from '../pages/loginPage'
 // 17. Click 'Delete Account' button
 // 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
 
-
 describe('Register User on page', () => {
+  it('Navigating to the website', () => {
+    homepage.open(Cypress.env('homePage'));
+  });
 
-    it('Navigating to the website', () => {
-        homepage.open(Cypress.env('homePage'))
-    });
+  it('Homepage navigation verification', () => {
+    cy.validUrl('exercise', Cypress.env('homePage'));
+    baseFunc.ValidatePageTitle('Automation Exercise');
+  });
 
-    it('Homepage navigation verification', () => {
-        cy.validUrl('exercise', Cypress.env('homePage'));
-        baseFunc.ValidatePageTitle("Automation Exercise");
-    });
+  it('Click On Signup/Login Button', () => {
+    homepage
+      .signInButton()
+      .should('be.visible')
+      .should('have.attr', 'href', '/login')
+      .realHover()
+      .realClick();
+  });
 
-    it('Click On Signup/Login Button', () => {
-        homepage.signInButton().click()
-    });
+  it('New User SignUp is visible', () => {
+    cy.contains('New User Signup!')
+      .should('be.visible')
+      .should('have.text', 'New User Signup!');
+  });
 
+  it('Enter name and email address', () => {
+    loginPage
+      .signUpName()
+      .should('be.visible')
+      .should('have.attr', 'placeholder', 'Name')
+      .type(Cypress.env('name'));
 
+    loginPage
+      .signUpPassword()
+      .should('be.visible')
+      .should('have.attr', 'placeholder', 'Email Address')
+      .type(Cypress.env('email'));
+  });
 
-
-
-
-
-
-
-
-
-
+  it('Click Signup button', () => {
+    loginPage
+      .signUpButton()
+      .should('not.be.hidden')
+      .should('have.class', 'btn btn-default')
+      .should('have.attr', 'type', 'submit')
+      .should('be.enabled')
+      .realClick();
+  });
 });

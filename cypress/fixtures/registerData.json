@@ -1,0 +1,21 @@
+{
+  "userName": "Rod4",
+  "email": "Gilberto_Stiedemann@gmail.com",
+  "password": "PVZXT1hSgFibDJN",
+  "dayOfBirth": "5",
+  "monthOfBirth": "March",
+  "yearOfBirth": "1985",
+  "firstName": "Evie",
+  "lastName": "Greenfelder",
+  "company": "Heaney, Satterfield and Ritchie",
+  "addressFirstLine": "Skiles Rest",
+  "addressSecondLine": "Apt. 098",
+  "state": "Georgia",
+  "city": "Baytown",
+  "zipCode": "66415",
+  "phoneNumber": "1-743-984-0318 x2263",
+  "cardNumber": "6767-8134-1001-5065",
+  "cvvCardNumber": "504",
+  "expirationMonth": "10",
+  "expirationYear": "2022"
+}
