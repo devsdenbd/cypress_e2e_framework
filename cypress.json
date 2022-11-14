@@ -1,8 +1,8 @@
 {
   "chromeWebSecurity": false,
   "defaultCommandTimeout": 20000,
-  "execTimeout": 60000,
-  "pageLoadTimeout": 40000,
+  "execTimeout": 20000,
+  "pageLoadTimeout": 30000,
   "requestTimeout": 20000,
   "responseTimeout": 20000,
   "video": false,

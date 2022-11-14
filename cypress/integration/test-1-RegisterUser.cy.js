@@ -3,6 +3,8 @@
 import homepage from "../pages/homePage";
 import baseFunc from "../pages/functions";
 import loginPage from "../pages/loginPage";
+import signUpPage from "../pages/signUpPage";
+import utils from "../support/utils";
 // 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
 // 9. Fill details: Title, Name, Email, Password, Date of birth
 // 10. Select checkbox 'Sign up for our newsletter!'
@@ -29,7 +31,9 @@ describe("Register User on page", () => {
     homepage
       .signInButton()
       .should("be.visible")
-      .should("have.attr", "href", "/login")
+      .then((btn) => {
+        expect(btn).to.have.attr("href", "/login");
+      })
       .realHover()
       .realClick();
   });
@@ -69,6 +73,30 @@ describe("Register User on page", () => {
 
     homepage.signInButton().then((btn) => {
       expect(btn).to.have.css("color", "rgb(255, 165, 0)");
+    });
+  });
+
+  it("Verify navigation to desired Page", () => {
+    signUpPage.enterAccountInformation().then((text) => {
+      expect(text).to.be.visible;
+      expect(text).to.have.text("Enter Account Information");
+      expect(text).to.have.css("color", utils.orangeColor);
+    });
+  });
+
+  it("Validate and Input title section", () => {
+    signUpPage.titleRadioButton().then(($btn) => {
+      expect($btn).to.be.visible;
+      cy.get($btn)
+        .eq(0)
+        .should("have.attr", "value", "Mr")
+        .realHover()
+        .realClick();
+      cy.get($btn)
+        .eq(1)
+        .should("have.attr", "value", "Mrs")
+        .realHover()
+        .realClick();
     });
   });
 });
