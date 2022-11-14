@@ -1,6 +1,5 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.formatOnPaste": false,
-  "cSpell.words": ["Zipcode"]
+  "editor.formatOnPaste": false
 }
