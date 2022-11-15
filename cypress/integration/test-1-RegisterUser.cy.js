@@ -5,6 +5,7 @@ import baseFunc from "../pages/functions";
 import loginPage from "../pages/loginPage";
 import signUpPage from "../pages/signUpPage";
 import utils from "../support/utils";
+import email from "../support";
 // 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
 // 9. Fill details: Title, Name, Email, Password, Date of birth
 // 10. Select checkbox 'Sign up for our newsletter!'
@@ -98,5 +99,47 @@ describe("Register User on page", () => {
         .realHover()
         .realClick();
     });
+  });
+
+  it("Entering Infos on SignUp form", () => {
+    signUpPage.nameInputField().then(($name) => {
+      expect($name).to.have.value(Cypress.env("name"));
+    });
+
+    signUpPage.emailInputField().then(($name) => {
+      expect($name).to.have.value(Cypress.env("email"));
+    });
+
+    signUpPage.emailInputField().then(($mail) => {
+      expect($mail).to.have.value(Cypress.env("email"));
+    });
+
+    signUpPage.passwordInputField().clear().realType(Cypress.env("password"));
+
+    signUpPage
+      .dayField()
+      .select("27")
+      .then(($day) => {
+        expect($day).to.have.value("27");
+      });
+
+    signUpPage
+      .monthField()
+      .select("October")
+      .then(($month) => {
+        expect($month).to.have.value("10");
+      });
+
+    signUpPage
+      .yearField()
+      .select("1991")
+      .then(($year) => {
+        expect($year).to.have.value("1991");
+      });
+  });
+
+  it("Validating checkbox", () => {
+    signUpPage.newsLetterCheckbox().check().should("be.checked");
+    signUpPage.specialOffersCheckbox().check().should("be.checked");
   });
 });
