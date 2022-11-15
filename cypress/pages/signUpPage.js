@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
 class SignUpPage {
+  /** Account Info Field */
+
   enterAccountInformation() {
     return cy.get(".login-form .text-center:nth-child(1) b");
   }
@@ -10,77 +12,77 @@ class SignUpPage {
   }
 
   nameInputField() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='name']");
   }
 
   emailInputField() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='email']");
   }
 
   passwordInputField() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='password']");
   }
 
   dayField() {
-    return cy.get("input[type='radio']");
+    return cy.get("select[data-qa='days']");
   }
 
   monthField() {
-    return cy.get("input[type='radio']");
+    return cy.get("select[data-qa='months']");
   }
 
   yearField() {
-    return cy.get("input[type='radio']");
+    return cy.get("select[data-qa='years']");
   }
 
-  newsLetterButton() {
-    return cy.get("input[type='radio']");
+  newsLetterCheckbox() {
+    return cy.get("input#newsletter");
   }
 
-  specialOffersButton() {
-    return cy.get("input[type='radio']");
+  specialOffersCheckbox() {
+    return cy.get("input#optin");
   }
 
   /** Address Information */
 
   firstNameField() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='first_name']");
   }
 
   lastNameField() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='last_name']");
   }
 
   addressField() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='address']");
   }
 
   address2Field() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='address2']");
   }
 
   countryField() {
-    return cy.get("input[type='radio']");
+    return cy.get("select[data-qa='country']");
   }
 
   stateField() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='state']");
   }
 
   cityField() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='city']");
   }
 
-  zipcodeField() {
-    return cy.get("input[type='radio']");
+  zipCodeField() {
+    return cy.get("input[data-qa='zipcode']");
   }
 
   mobileNoField() {
-    return cy.get("input[type='radio']");
+    return cy.get("input[data-qa='mobile_number']");
   }
 
   createAccountButton() {
-    return cy.get("input[type='radio']");
+    return cy.get("button[data-qa='create-account']");
   }
 }
 
