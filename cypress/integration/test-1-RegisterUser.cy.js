@@ -142,4 +142,15 @@ describe("Register User on page", () => {
     signUpPage.newsLetterCheckbox().check().should("be.checked");
     signUpPage.specialOffersCheckbox().check().should("be.checked");
   });
+
+  it("Address Info Field", () => {
+    signUpPage
+      .firstNameField()
+      .clear()
+      .should("have.value", "")
+      .then((firstName) => {
+        firstName.realType();
+        expect(firstName).to.have.value();
+      });
+  });
 });
