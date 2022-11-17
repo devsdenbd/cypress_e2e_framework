@@ -1,3 +1,14 @@
+function makeId(length) {
+  var result = "";
+  var characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
 const Utils = {
   menuClass: [
     "fa fa-home",
@@ -22,6 +33,19 @@ const Utils = {
   ],
 
   orangeColor: "rgb(254, 152, 15)",
+
+  randomEmail: makeId(8) + "@mail.com",
+  randomAccountName: makeId(12),
+  firstName: "Robert",
+  lastName: "Nero",
+  companyName: "DevsDenBD",
+  address: "Mirpur",
+  address2: "Dhaka",
+  country: "Canada",
+  state: "none",
+  city: "Dhaka",
+  zipCode: "1216",
+  mobileNo: "123456789001",
 };
 
 export default Utils;
