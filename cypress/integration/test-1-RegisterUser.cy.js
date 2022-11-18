@@ -5,18 +5,6 @@ import baseFunc from "../pages/functions";
 import loginPage from "../pages/loginPage";
 import signUpPage from "../pages/signUpPage";
 import utils from "../support/utils";
-import email from "../support";
-// 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
-// 9. Fill details: Title, Name, Email, Password, Date of birth
-// 10. Select checkbox 'Sign up for our newsletter!'
-// 11. Select checkbox 'Receive special offers from our partners!'
-// 12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-// 13. Click 'Create Account button'
-// 14. Verify that 'ACCOUNT CREATED!' is visible
-// 15. Click 'Continue' button
-// 16. Verify that 'Logged in as username' is visible
-// 17. Click 'Delete Account' button
-// 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
 
 describe("Register User on page", () => {
   it("Navigating to the website", () => {
@@ -50,13 +38,13 @@ describe("Register User on page", () => {
       .signUpName()
       .should("be.visible")
       .should("have.attr", "placeholder", "Name")
-      .type(Cypress.env("name"));
+      .type(utils.randomAccountName);
 
     loginPage
       .signUpPassword()
       .should("be.visible")
       .should("have.attr", "placeholder", "Email Address")
-      .type(Cypress.env("email"));
+      .type(utils.randomEmail);
   });
 
   it("Click Signup button", () => {
@@ -102,18 +90,6 @@ describe("Register User on page", () => {
   });
 
   it("Entering Infos on SignUp form", () => {
-    signUpPage.nameInputField().then(($name) => {
-      expect($name).to.have.value(Cypress.env("name"));
-    });
-
-    signUpPage.emailInputField().then(($name) => {
-      expect($name).to.have.value(Cypress.env("email"));
-    });
-
-    signUpPage.emailInputField().then(($mail) => {
-      expect($mail).to.have.value(Cypress.env("email"));
-    });
-
     signUpPage.passwordInputField().clear().realType(Cypress.env("password"));
 
     signUpPage
@@ -144,13 +120,46 @@ describe("Register User on page", () => {
   });
 
   it("Address Info Field", () => {
+    signUpPage.firstNameField().type(utils.firstName);
+
+    signUpPage.lastNameField().type(utils.lastName);
+
+    signUpPage.companyField().type(utils.companyName);
+
+    signUpPage.addressField().type(utils.address);
+
+    signUpPage.address2Field().type(utils.address2);
+
+    signUpPage.countryField().select(utils.country);
+
+    signUpPage.stateField().type(utils.state);
+
+    signUpPage.cityField().type(utils.city);
+
+    signUpPage.zipCodeField().type(utils.zipCode);
+
+    signUpPage.mobileNoField().type(utils.mobileNo);
+  });
+
+  it("Click create account button", () => {
     signUpPage
-      .firstNameField()
-      .clear()
-      .should("have.value", "")
-      .then((firstName) => {
-        firstName.realType();
-        expect(firstName).to.have.value();
-      });
+      .createAccountButton()
+      .should("be.visible")
+      .should("have.html", "Create Account")
+      .click();
+
+    cy.contains("Account Created").should("exist");
+
+    cy.contains("Continue").click();
+  });
+
+  it("Username validation & delete", () => {
+    cy.get(".navbar-nav > li:nth-child(10) > a:nth-child(1)").should(
+      "contain.text",
+      "Logged in as",
+    );
+
+    cy.contains("Delete Account").click();
+    cy.contains("Continue").click();
   });
 });

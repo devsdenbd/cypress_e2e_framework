@@ -61,6 +61,10 @@ class SignUpPage {
     return cy.get("input[data-qa='address2']");
   }
 
+  companyField() {
+    return cy.get("input[data-qa='company']");
+  }
+
   countryField() {
     return cy.get("select[data-qa='country']");
   }
