@@ -4,8 +4,11 @@
   "description": "Cypress End-To-End Testing (JS)",
   "main": "index.js",
   "scripts": {
-    "test": "test",
-    "cy": "cypress open"
+    "test": "cypress run --browser chrome --headless",
+    "cy": "cypress open",
+    "report-merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/finalReport.json",
+    "report-generate": "marge cypress/reports/finalReport.json --reportDir ./ --inline",
+    "mochaReport": "npm run report-merge && npm run mochawesome_generate_report"
   },
   "repository": {
     "type": "git",
@@ -20,8 +23,12 @@
     "url": "https://github.com/DevsDenBD/cypress_e2e_framework/issues"
   },
   "devDependencies": {
-    "cypress": "^9.3.1",
-    "eslint-config-prettier": "^8.5.0",
+    "cypress": "^11.1.0",
+    "cypress-mochawesome-reporter": "^3.2.2",
+    "cypress-multi-reporters": "^1.5.0",
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.0.1",
     "prettier": "2.7.1"
   },
   "dependencies": {
