@@ -88,6 +88,10 @@ class SignUpPage {
   createAccountButton() {
     return cy.get("button[data-qa='create-account']");
   }
+
+  loginText() {
+    return cy.get(".login-form h2");
+  }
 }
 
 export default new SignUpPage();

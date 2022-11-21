@@ -36,16 +36,19 @@ const Utils = {
 
   randomEmail: makeId(8) + "@mail.com",
   randomAccountName: makeId(12),
+  randomPassword: makeId(8),
   firstName: "Robert",
   lastName: "Nero",
   companyName: "DevsDenBD",
   address: "Mirpur",
   address2: "Dhaka",
   country: "Canada",
-  state: "none",
+  state: "None",
   city: "Dhaka",
   zipCode: "1216",
-  mobileNo: "123456789001",
+  mobileNo: "1234556789",
+  accountEmail: "devsdenbd@mail.com",
+  accountPassword: "12345667",
 };
 
 export default Utils;
