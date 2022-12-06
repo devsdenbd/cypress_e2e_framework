@@ -8,7 +8,8 @@ import utils from "../support/utils";
 
 describe("Register User on page", () => {
   it("Navigating to the website", () => {
-    homepage.open(Cypress.env("homePage"));
+    // homepage.open(Cypress.env("homePage"));
+    cy.visit('/');
   });
 
   it("Homepage navigation verification", () => {
