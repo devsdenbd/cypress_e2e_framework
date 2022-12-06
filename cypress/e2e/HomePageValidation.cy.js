@@ -6,7 +6,7 @@ import utils from "../support/utils";
 
 describe("HomePage Testing", () => {
   it("Navigate and Validate Home Page", () => {
-    cy.visit(Cypress.env("homePage"));
+    cy.visit('/');
     cy.validUrl("exercise", Cypress.env("homePage"));
   });
 
