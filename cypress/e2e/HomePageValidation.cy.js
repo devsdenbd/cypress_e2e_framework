@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 
 import homePage from "../pages/homePage";
-
 import utils from "../support/utils";
 
 describe("HomePage Testing", () => {

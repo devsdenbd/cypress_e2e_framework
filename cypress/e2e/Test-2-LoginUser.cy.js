@@ -5,6 +5,8 @@ import baseFunc from "../pages/functions";
 import loginPage from "../pages/loginPage";
 import signUpPage from "../pages/signUpPage";
 import utils from "../support/utils";
+import credUtils from '../support/credentialUtils';
+
 
 describe("Login User With Right Credentials", () => {
   it("Navigating to the website", () => {
@@ -12,9 +14,9 @@ describe("Login User With Right Credentials", () => {
     cy.visit('/');
   });
 
-  it("Homepage navigation verification", () => {
-    cy.validUrl("exercise", Cypress.env("homePage"));
-    baseFunc.ValidatePageTitle("Automation Exercise");
+  it('Homepage navigation verification', () => {
+    cy.validUrl('exercise', credUtils.homePage);
+    baseFunc.ValidatePageTitle('Automation Exercise');
   });
 
   it("Click On Signup/Login Button", () => {
