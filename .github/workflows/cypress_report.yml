@@ -2,7 +2,7 @@ name: Generate Cypress Report
 on:
   push:
     branches:
-      - 'mahbub'
+      - 'talha'
 
 jobs:
   cypress-test:

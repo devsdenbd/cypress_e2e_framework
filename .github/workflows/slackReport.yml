@@ -3,7 +3,7 @@ name: Cypress Test Suite
 on:
   push:
     branches:
-      - 'master'
+      - 'talha'
 
 jobs:
   cypress-run:
