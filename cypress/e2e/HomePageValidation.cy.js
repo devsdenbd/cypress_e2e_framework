@@ -2,11 +2,12 @@
 
 import homePage from "../pages/homePage";
 import utils from "../support/utils";
+import credUtils from '../support/credentialUtils';
 
 describe("HomePage Testing", () => {
   it("Navigate and Validate Home Page", () => {
     cy.visit('/');
-    cy.validUrl("exercise", Cypress.env("homePage"));
+    cy.validUrl('exercise', credUtils.homePage);
   });
 
   it("Validate Header Menus ", () => {
