@@ -26,7 +26,7 @@ describe('Login Validation For Users', () => {
 
     homePage.signInButton().realClick();
 
-    cy.validUrl('/login', Cypress.env('loginPage'));
+    cy.validUrl('exercise', credUtils.loginPage);
 
     loginPage
       .loginForm()
